@@ -79,16 +79,16 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Middel Friet</div>
-                <div class="card-price">€3,00</div>
+                <div class="card-name"><?php echo $result[1]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[1]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/Friet.png" alt="Middel Friet" class="card-img" />
+              <img src="<?php echo $result[1]['afbeeldingen']; ?>" alt="Middel Friet" class="card-img" />
             </div>
-            <div class="card-description">Een ruime portie goudgele friet, perfect bij een saus naar keuze.</div>
+            <div class="card-description"><?php echo $result[1]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag">Gluten</span>
+              <span class="allergen-tag"><?php echo $result[1]['allergenen']; ?></span>
             </div>
             <a href="cart.php?add=middel-friet" class="btn-voeg">Voeg toe</a>
           </div>
@@ -96,16 +96,16 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Grote Friet</div>
-                <div class="card-price">€3,65</div>
+                <div class="card-name"><?php echo $result[2]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[2]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/Friet.png" alt="Grote Friet" class="card-img" />
+              <img src="<?php echo $result[2]['afbeeldingen']; ?>" alt="Grote Friet" class="card-img" />
             </div>
-            <div class="card-description">Een flinke grote portie verse friet — voor de echte frietliefhebber.</div>
+            <div class="card-description"><?php echo $result[2]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag">Gluten</span>
+              <span class="allergen-tag"><?php echo $result[2]['allergenen']; ?></span>
             </div>
             <a href="cart.php?add=grote-friet" class="btn-voeg">Voeg toe</a>
           </div>
@@ -113,16 +113,16 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Kleine Gezinszak</div>
-                <div class="card-price">€6,50</div>
+                <div class="card-name"><?php echo $result[3]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[3]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/Gezinsfriet.png" alt="Kleine Gezinszak" class="card-img" />
+              <img src="<?php echo $result[3]['afbeeldingen']; ?>" alt="Kleine Gezinszak" class="card-img" />
             </div>
-            <div class="card-description">Gezellig samen genieten! Een kleine zak verse friet voor 2–3 personen.</div>
+            <div class="card-description"><?php echo $result[3]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag">Gluten</span>
+              <span class="allergen-tag"><?php echo $result[3]['allergenen']; ?></span>
             </div>
             <a href="cart.php?add=kleine-gezinszak" class="btn-voeg">Voeg toe</a>
           </div>
@@ -130,16 +130,16 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Middel Gezinszak</div>
-                <div class="card-price">€8,50</div>
+                <div class="card-name"><?php echo $result[4]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[4]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/Gezinsfriet.png" alt="Middel Gezinszak" class="card-img" />
+              <img src="<?php echo $result[4]['afbeeldingen']; ?>" alt="Middel Gezinszak" class="card-img" />
             </div>
-            <div class="card-description">Perfecte middelmaat voor het hele gezin — verse friet voor 3–4 personen.</div>
+            <div class="card-description"><?php echo $result[4]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag">Gluten</span>
+              <span class="allergen-tag"><?php echo $result[4]['allergenen']; ?></span>
             </div>
             <a href="cart.php?add=middel-gezinszak" class="btn-voeg">Voeg toe</a>
           </div>
@@ -147,16 +147,16 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Grote Gezinszak</div>
-                <div class="card-price">€10,00</div>
+                <div class="card-name"><?php echo $result[5]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[5]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/Gezinsfriet.png" alt="Grote Gezinszak" class="card-img" />
+              <img src="<?php echo $result[5]['afbeeldingen']; ?>" alt="Grote Gezinszak" class="card-img" />
             </div>
-            <div class="card-description">De ultieme gezinsportie verse friet — meer dan genoeg voor 4–5 personen.</div>
+            <div class="card-description"><?php echo $result[5]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag">Gluten</span>
+              <span class="allergen-tag"><?php echo $result[5]['allergenen']; ?></span>
             </div>
             <a href="cart.php?add=grote-gezinszak" class="btn-voeg">Voeg toe</a>
           </div>
@@ -172,12 +172,12 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Coca Cola</div>
-                <div class="card-price">€1,15</div>
+                <div class="card-name"><?php echo $result[6]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[6]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/cola.png" alt="Coca Cola" class="card-img" />
+              <img src="<?php echo $result[6]['afbeeldingen']; ?>" alt="Coca Cola" class="card-img" />
             </div>
-            <div class="card-description">Het klassieke bruisende frisdrank — ijskoud geserveerd. Ideale begeleider bij verse friet.</div>
+            <div class="card-description"><?php echo $result[6]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-none">Geen allergenen</span>
@@ -188,12 +188,12 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Sprite</div>
-                <div class="card-price">€1,15</div>
+                <div class="card-name"><?php echo $result[7]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[7]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/sprite.png" alt="Sprite" class="card-img" />
+              <img src="<?php echo $result[7]['afbeeldingen']; ?>" alt="Sprite" class="card-img" />
             </div>
-            <div class="card-description">Fris en citrusachtig bruiswater voor een verfrissende dorstlesser.</div>
+            <div class="card-description"><?php echo $result[7]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-none">Geen allergenen</span>
@@ -204,12 +204,12 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Fanta Orange</div>
-                <div class="card-price">€1,15</div>
+                <div class="card-name"><?php echo $result[8]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[8]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/fanta.png" alt="Fanta Orange" class="card-img" />
+              <img src="<?php echo $result[8]['afbeeldingen']; ?>" alt="Fanta Orange" class="card-img" />
             </div>
-            <div class="card-description">Zoet en fruitig met een lekkere sinaasappelsmaak — favoriet bij jong en oud.</div>
+            <div class="card-description"><?php echo $result[8]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-none">Geen allergenen</span>
@@ -220,12 +220,12 @@
           <div class="card">
             <div class="card-top">
               <div class="card-info">
-                <div class="card-name">Water</div>
-                <div class="card-price">€0,60</div>
+                <div class="card-name"><?php echo $result[9]['naam']; ?></div>
+                <div class="card-price">€<?php echo $result[9]['prijs']; ?>,00</div>
               </div>
-              <img src="assets/img/water.png" alt="Water" class="card-img" />
+              <img src="<?php echo $result[9]['afbeeldingen']; ?>" alt="Water" class="card-img" />
             </div>
-            <div class="card-description">Stil bronwater — puur, fris en altijd een goede keuze.</div>
+            <div class="card-description"><?php echo $result[9]['beschrijving']; ?></div>
             <hr class="card-divider" />
             <div class="card-allergens">
               <span class="allergen-none">Geen allergenen</span>
