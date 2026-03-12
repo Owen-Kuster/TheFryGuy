@@ -8,7 +8,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Oswald:wght@400;600;700&family=Lato:wght@400;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
   <!-- HEADER -->
   <header>
     <nav class="left">
-      <a href="index.html">Home</a>
+      <a href="index.php">Home</a>
       <a href="menu.html">Menu</a>
       <a href="bestel.html">Bestel bij ons</a>
       <a href="over.html">Over ons</a>
@@ -27,7 +27,7 @@
     </div>
 
     <nav class="right">
-      <a href="account.html" class="btn-account">Account</a>
+      <a href="dbcalls/login/admin.php" class="btn-account">Account</a>
     </nav>
   </header>
 
