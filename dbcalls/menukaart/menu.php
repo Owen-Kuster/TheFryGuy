@@ -8,7 +8,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Oswald:wght@400;600;700&family=Lato:wght@400;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
@@ -57,185 +57,58 @@
       <!-- VERSE FRIET -->
       <section>
         <div class="section-title">Verse Friet</div>
-        <div class="grid-2">
+        <?php foreach ($result as $product) {
+          if ($product["categorie"] == "friet") {
+            ?>
+            <div class="grid-2">
 
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[0]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[0]['prijs']; ?>,00</div>
+              <div class="card">
+                <div class="card-top">
+                  <div class="card-info">
+                    <div class="card-name"><?php echo $product['naam']; ?></div>
+                    <div class="card-price">€<?php echo $product['prijs']; ?>,00</div>
+                  </div>
+                  <img src="<?php echo $product['afbeeldingen']; ?>" alt="Kleine Friet" class="card-img" />
+                </div>
+                <div class="card-description"><?php echo $product['beschrijving']; ?></div>
+                <hr class="card-divider" />
+                <div class="card-allergens">
+                  <span class="allergen-label">Allergenen:</span>
+                  <span class="allergen-tag"><?php echo $product['allergenen']; ?></span>
+                </div>
+                <a href="cart.php?add=kleine-friet" class="btn-voeg">Voeg toe</a>
+
               </div>
-              <img src="<?php echo $result[0]['afbeeldingen']; ?>" alt="Kleine Friet" class="card-img" />
             </div>
-            <div class="card-description"><?php echo $result[0]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag"><?php echo $result[0]['allergenen']; ?></span>
-            </div>
-            <a href="cart.php?add=kleine-friet" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[1]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[1]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[1]['afbeeldingen']; ?>" alt="Middel Friet" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[1]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag"><?php echo $result[1]['allergenen']; ?></span>
-            </div>
-            <a href="cart.php?add=middel-friet" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[2]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[2]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[2]['afbeeldingen']; ?>" alt="Grote Friet" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[2]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag"><?php echo $result[2]['allergenen']; ?></span>
-            </div>
-            <a href="cart.php?add=grote-friet" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[3]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[3]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[3]['afbeeldingen']; ?>" alt="Kleine Gezinszak" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[3]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag"><?php echo $result[3]['allergenen']; ?></span>
-            </div>
-            <a href="cart.php?add=kleine-gezinszak" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[4]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[4]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[4]['afbeeldingen']; ?>" alt="Middel Gezinszak" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[4]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag"><?php echo $result[4]['allergenen']; ?></span>
-            </div>
-            <a href="cart.php?add=middel-gezinszak" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[5]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[5]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[5]['afbeeldingen']; ?>" alt="Grote Gezinszak" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[5]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-label">Allergenen:</span>
-              <span class="allergen-tag"><?php echo $result[5]['allergenen']; ?></span>
-            </div>
-            <a href="cart.php?add=grote-gezinszak" class="btn-voeg">Voeg toe</a>
-          </div>
-
-        </div>
+          <?php }} ?>
       </section>
+      
 
       <!-- DRANKJES -->
       <section>
         <div class="section-title">Drankjes</div>
-        <div class="grid-2">
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[6]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[6]['prijs']; ?>,00</div>
+        <?php foreach ($result as $product) {
+          if ($product["categorie"] == "drinken") {
+            ?>
+            <div class="grid-2">
+              <div class="card">
+                <div class="card-top">
+                  <div class="card-info">
+                    <div class="card-name"><?php echo $product['naam']; ?></div>
+                    <div class="card-price">€<?php echo $product['prijs']; ?>,00</div>
+                  </div>
+                  <img src="<?php echo $product['afbeeldingen']; ?>" alt="Coca Cola" class="card-img" />
+                </div>
+                <div class="card-description"><?php echo $product['beschrijving']; ?></div>
+                <hr class="card-divider" />
+                <div class="card-allergens">
+                  <span class="allergen-none">Geen allergenen</span>
+                </div>
+                <a href="cart.php?add=coca-cola" class="btn-voeg">Voeg toe</a>
               </div>
-              <img src="<?php echo $result[6]['afbeeldingen']; ?>" alt="Coca Cola" class="card-img" />
             </div>
-            <div class="card-description"><?php echo $result[6]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-none">Geen allergenen</span>
-            </div>
-            <a href="cart.php?add=coca-cola" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[7]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[7]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[7]['afbeeldingen']; ?>" alt="Sprite" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[7]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-none">Geen allergenen</span>
-            </div>
-            <a href="cart.php?add=sprite" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[8]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[8]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[8]['afbeeldingen']; ?>" alt="Fanta Orange" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[8]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-none">Geen allergenen</span>
-            </div>
-            <a href="cart.php?add=fanta-orange" class="btn-voeg">Voeg toe</a>
-          </div>
-
-          <div class="card">
-            <div class="card-top">
-              <div class="card-info">
-                <div class="card-name"><?php echo $result[9]['naam']; ?></div>
-                <div class="card-price">€<?php echo $result[9]['prijs']; ?>,00</div>
-              </div>
-              <img src="<?php echo $result[9]['afbeeldingen']; ?>" alt="Water" class="card-img" />
-            </div>
-            <div class="card-description"><?php echo $result[9]['beschrijving']; ?></div>
-            <hr class="card-divider" />
-            <div class="card-allergens">
-              <span class="allergen-none">Geen allergenen</span>
-            </div>
-            <a href="cart.php?add=water" class="btn-voeg">Voeg toe</a>
-          </div>
-
-        </div>
-      </section>
-
+            <?php }} ?>
+          </section>
     </main>
 
     <!-- SIDEBAR: ORDER BOX -->
