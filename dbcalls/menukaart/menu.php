@@ -17,9 +17,9 @@
   <header>
     <nav class="left">
       <a href="index.php">Home</a>
-      <a href="menu.html">Menu</a>
-      <a href="bestel.html">Bestel bij ons</a>
-      <a href="over.html">Over ons</a>
+      <a href="menu.php">Menu</a>
+      <a href="contact.php">Contact</a>
+      <a href="over.php">Over ons</a>
     </nav>
 
     <div class="logo-center">
@@ -57,11 +57,9 @@
       <!-- VERSE FRIET -->
       <section>
         <div class="section-title">Verse Friet</div>
-        <?php foreach ($result as $product) {
-          if ($product["categorie"] == "friet") {
-            ?>
-            <div class="grid-2">
-
+        <div class="grid-2">
+          <?php foreach ($result as $product) {
+            if ($product["categorie"] == "friet") { ?>
               <div class="card">
                 <div class="card-top">
                   <div class="card-info">
@@ -76,21 +74,24 @@
                   <span class="allergen-label">Allergenen:</span>
                   <span class="allergen-tag"><?php echo $product['allergenen']; ?></span>
                 </div>
-                <a href="cart.php?add=kleine-friet" class="btn-voeg">Voeg toe</a>
-
+                <button
+                  class="btn-voeg"
+                  data-naam="<?php echo htmlspecialchars($product['naam']); ?>"
+                  data-prijs="<?php echo $product['prijs']; ?>">
+                  Voeg toe
+                </button>
               </div>
-            </div>
-          <?php }} ?>
+            <?php }
+          } ?>
+        </div>
       </section>
-      
 
       <!-- DRANKJES -->
       <section>
         <div class="section-title">Drankjes</div>
-        <?php foreach ($result as $product) {
-          if ($product["categorie"] == "drinken") {
-            ?>
-            <div class="grid-2">
+        <div class="grid-2">
+          <?php foreach ($result as $product) {
+            if ($product["categorie"] == "drinken") { ?>
               <div class="card">
                 <div class="card-top">
                   <div class="card-info">
@@ -104,19 +105,30 @@
                 <div class="card-allergens">
                   <span class="allergen-none">Geen allergenen</span>
                 </div>
-                <a href="cart.php?add=coca-cola" class="btn-voeg">Voeg toe</a>
+                <button
+                  class="btn-voeg"
+                  data-naam="<?php echo htmlspecialchars($product['naam']); ?>"
+                  data-prijs="<?php echo $product['prijs']; ?>">
+                  Voeg toe
+                </button>
               </div>
-            </div>
-            <?php }} ?>
-          </section>
+            <?php }
+          } ?>
+        </div>
+      </section>
+
     </main>
 
     <!-- SIDEBAR: ORDER BOX -->
     <aside class="sidebar">
       <div class="order-box">
+        <div class="order-title">Jouw bestelling</div>
+        <ul class="order-items" id="orderItems">
+          <li class="order-empty">Nog niets toegevoegd</li>
+        </ul>
         <div class="totaal-row">
           <span class="totaal-label">Totaal</span>
-          <span class="totaal-amount">€ 0,00</span>
+          <span class="totaal-amount" id="totaalBedrag">€ 0,00</span>
         </div>
         <a href="afrekenen.php" class="btn-afrekenen">Afrekenen</a>
       </div>
@@ -126,10 +138,12 @@
 
   <!-- FOOTER -->
   <footer>
-    <a href="bestel.html">Bestel bij ons</a>
-    <a href="over.html">Over ons</a>
+    <a href="menu.php">Menu</a>
+    <a href="contact.php">Contact</a>
+    <a href="over.php">Over ons</a>
   </footer>
 
+  <script src="assets/js/java.js"></script>
 </body>
 
 </html>
