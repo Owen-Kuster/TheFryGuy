@@ -2,16 +2,26 @@
 
 include '../conn.php';
 
-$voornaam = $_POST["voornaam"];
-$achternaam = $_POST["achternaam"];
+$naam = $_POST["naam"];
+$prijs = $_POST["prijs"];
+$categorie = $_POST["categorie"];
+$allergenen = $_POST["allergenen"];
+$beschrijving = $_POST["beschrijving"];
+$afbeeldingen = $_POST["afbeeldingen"];
 
 //variabel met een SQL query
-$sql = "INSERT INTO `personeel`(`voornaam`, `achternaam`) VALUES (:voornaam, :achternaam)";
+$sql = "INSERT INTO menukaart(naam, prijs, categorie, allergenen, beschrijving, afbeeldingen) VALUES (:naam, :prijs, :categorie, :allergenen, :beschrijving, :afbeeldingen)";
 
 $stmt = $conn->prepare($sql);
 
-$stmt->bindParam(':voornaam', $voornaam);
-$stmt->bindParam(':achternaam', $achternaam);
+$stmt->bindParam(':naam', $naam);
+$stmt->bindParam(':prijs', $prijs);
+$stmt->bindParam(':categorie', $categorie);
+$stmt->bindParam(':allergenen', $allergenen);
+$stmt->bindParam(':beschrijving', $beschrijving);
+$stmt->bindParam(':afbeeldingen', $afbeeldingen);
 
 //execute on db
 $stmt->execute();
+
+Header("Location: ../login/admin.php");

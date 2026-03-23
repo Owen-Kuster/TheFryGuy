@@ -228,8 +228,8 @@
   <!-- HEADER -->
   <header>
     <nav class="left">
-      <a href="index.php">Home</a>
-      <a href="menu.php">Menu</a>
+      <a href="../../index.php">Home</a>
+      <a href="../menukaart/menu.php">Menu</a>
       <a href="contact.php">Contact</a>
       <a href="over.php">Over ons</a>
     </nav>

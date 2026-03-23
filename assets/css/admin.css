@@ -276,3 +276,13 @@ tbody td {
   .form-group.full { grid-column: 1; }
   .admin-header { padding: 0 18px; }
 }
+
+/* ── PRODUCT EDIT CARDS ── */
+.product-edit-card {
+  margin-bottom: 16px;
+}
+.product-edit-card .card-header.brown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

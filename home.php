@@ -263,7 +263,7 @@
     <nav class="left">
       <a href="index.php">Home</a>
       <a href="menu.php">Menu</a>
-      <a href="contact.php">Contact</a>
+      <a href="dbcalls/contact/contact.php">Contact</a>
       <a href="over.php">Over ons</a>
     </nav>
     <div class="logo-center">
@@ -289,10 +289,10 @@
 
   <!-- USP BALK -->
   <div class="usp-balk">
-    <div class="usp-item">🍟 Vers gebakken friet</div>
-    <div class="usp-item">⭐ #1 in Gelderland</div>
-    <div class="usp-item">🕐 Elke dag geopend</div>
-    <div class="usp-item">🛵 Snel geleverd</div>
+    <div class="usp-item">Vers gebakken friet</div>
+    <div class="usp-item">#1 in Gelderland</div>
+    <div class="usp-item">Elke dag geopend</div>
+    <div class="usp-item">Snel geleverd</div>
   </div>
 
   <!-- POPULAIRE PRODUCTEN -->

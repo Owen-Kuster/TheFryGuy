@@ -1,3 +1,12 @@
+<?php
+include '../conn.php';
+
+// Alle producten ophalen
+$sql = "SELECT * FROM menukaart";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$producten = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -20,118 +29,82 @@
 
   <div class="admin-wrapper">
 
-
     <!-- ══════════════════════════════════
-         ALLE PRODUCTEN + BEWERK / VERWIJDER
+         PRODUCT BEWERKEN
     ══════════════════════════════════ -->
     <div>
-      <div class="section-title">Alle producten</div>
+      <div class="section-title">Product bewerken</div>
       <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Naam</th>
-                <th>Categorie</th>
-                <th>Prijs</th>
-                <th>Allergenen</th>
-                <th>Acties</th>
-              </tr>
-            </thead>
-            <tbody>
+        <div class="card-body">
 
-              <!-- PHP: foreach ($producten as $product) { -->
-              <!-- PHP: $isEdit = isset($_GET['edit']) && $_GET['edit'] == $product['id']; -->
+          <!-- DROPDOWN OM PRODUCT TE KIEZEN -->
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label for="productKiezer">Kies een product</label>
+            <select id="productKiezer" onchange="laadProduct(this)">
+              <option value="">-- Selecteer een product --</option>
+              <?php foreach ($producten as $product) { ?>
+                <option
+                  value="<?php echo $product['id']; ?>"
+                  data-naam="<?php echo htmlspecialchars($product['naam']); ?>"
+                  data-prijs="<?php echo $product['prijs']; ?>"
+                  data-categorie="<?php echo $product['categorie']; ?>"
+                  data-allergenen="<?php echo htmlspecialchars($product['allergenen']); ?>"
+                  data-beschrijving="<?php echo htmlspecialchars($product['beschrijving']); ?>"
+                  data-afbeeldingen="<?php echo htmlspecialchars($product['afbeeldingen']); ?>">
+                  <?php echo htmlspecialchars($product['naam']); ?>
+                </option>
+              <?php } ?>
+            </select>
+          </div>
 
-              <!-- ── Normale rij ── -->
-              <tr>
-                <td><!-- PHP: $product['id'] --></td>
-                <td><!-- PHP: $product['naam'] --></td>
-                <td><span class="badge-cat"><!-- PHP: $product['categorie'] --></span></td>
-                <td>€<!-- PHP: $product['prijs'] -->,00</td>
-                <td><span class="allergen-tag"><!-- PHP: $product['allergenen'] --></span></td>
-                <td>
-                  <div class="row-actions">
-                    <!-- Bewerk knop: stuurt naar zelfde pagina met ?edit=ID -->
-                    <!-- PHP: <a href="admin.php?edit=<?php echo $product['id']; ?>" class="btn btn-brown btn-sm">Bewerk</a> -->
-                    <a href="#" class="btn btn-brown btn-sm">Bewerk</a>
+          <!-- BEWERKFORMULIER (begint leeg) -->
+          <form action="../menukaart/update.php" method="POST" id="bewerkForm">
+            <input type="hidden" name="id" id="edit-id" value="" />
 
-                    <!-- Verwijder knop: eigen mini-form met POST -->
-                    <!-- PHP: action="admin.php" method="POST" -->
-                    <form action="" method="POST" class="inline-form">
-                      <!-- PHP: <input type="hidden" name="action" value="verwijderen"> -->
-                      <!-- PHP: <input type="hidden" name="id" value="<?php echo $product['id']; ?>"> -->
-                      <input type="hidden" name="action" value="verwijderen" />
-                      <input type="hidden" name="id" value="" />
-                      <button type="submit" class="btn btn-red btn-sm">Verwijder</button>
-                    </form>
-                  </div>
-                </td>
-              </tr>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Naam</label>
+                <input type="text" name="naam" id="edit-naam" placeholder="Kies eerst een product" />
+              </div>
+              <div class="form-group">
+                <label>Prijs (€)</label>
+                <input type="number" name="prijs" id="edit-prijs" placeholder="Prijs" />
+              </div>
+              <div class="form-group">
+                <label>Categorie</label>
+                <select name="categorie" id="edit-categorie">
+                  <option value="friet">Verse Friet</option>
+                  <option value="drinken">Drankjes</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Allergenen</label>
+                <input type="text" name="allergenen" id="edit-allergenen" placeholder="Allergenen" />
+              </div>
+              <div class="form-group full">
+                <label>Beschrijving</label>
+                <textarea name="beschrijving" id="edit-beschrijving" placeholder="Beschrijving"></textarea>
+              </div>
+              <div class="form-group full">
+                <label>Afbeelding pad</label>
+                <input type="text" name="afbeeldingen" id="edit-afbeeldingen" placeholder="assets/img/friet.png" />
+              </div>
+            </div>
 
-              <!-- ── Bewerkrij (klapt open onder het product als ?edit=ID actief is) ── -->
-              <!-- PHP: if ($isEdit) { -->
-              <tr class="edit-row">
-                <td colspan="6">
-                  <!-- PHP: action="admin.php" method="POST" -->
-                  <form action="" method="POST" class="edit-form">
+            <div class="form-actions">
+              <button type="submit" class="btn btn-brown">Opslaan</button>
 
-                    <!-- PHP: <input type="hidden" name="action" value="bewerken"> -->
-                    <!-- PHP: <input type="hidden" name="id" value="<?php echo $product['id']; ?>"> -->
-                    <input type="hidden" name="action" value="bewerken" />
-                    <input type="hidden" name="id" value="" />
+              <!-- VERWIJDER -->
+              <form action="../menukaart/delete.php" method="POST" style="display:inline;">
+                <input type="hidden" name="id" id="delete-id" value="" />
+                <button type="submit" class="btn btn-red"
+                  onclick="return confirm('Weet u zeker dat u dit product wilt verwijderen?')">
+                  Verwijder
+                </button>
+              </form>
+            </div>
 
-                    <div class="form-grid">
-                      <div class="form-group">
-                        <label>Naam</label>
-                        <!-- PHP: value="<?php echo $product['naam']; ?>" -->
-                        <input type="text" name="naam" placeholder="Naam" />
-                      </div>
-                      <div class="form-group">
-                        <label>Prijs (€)</label>
-                        <!-- PHP: value="<?php echo $product['prijs']; ?>" -->
-                        <input type="number" name="prijs" placeholder="Prijs" />
-                      </div>
-                      <div class="form-group">
-                        <label>Categorie</label>
-                        <select name="categorie">
-                          <option value="friet">Verse Friet</option>
-                          <option value="drankjes">Drankjes</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label>Allergenen</label>
-                        <!-- PHP: value="<?php echo $product['allergenen']; ?>" -->
-                        <input type="text" name="allergenen" placeholder="Allergenen" />
-                      </div>
-                      <div class="form-group full">
-                        <label>Beschrijving</label>
-                        <!-- PHP: <?php echo $product['beschrijving']; ?> tussen de textarea tags -->
-                        <textarea name="beschrijving" placeholder="Beschrijving"></textarea>
-                      </div>
-                      <div class="form-group full">
-                        <label>Afbeelding pad</label>
-                        <!-- PHP: value="<?php echo $product['afbeeldingen']; ?>" -->
-                        <input type="text" name="afbeeldingen" placeholder="assets/img/friet.png" />
-                      </div>
-                    </div>
-
-                    <div class="form-actions">
-                      <button type="submit" class="btn btn-brown">Opslaan</button>
-                      <!-- PHP: <a href="admin.php" class="btn btn-outline">Annuleren</a> -->
-                      <a href="#" class="btn btn-outline">Annuleren</a>
-                    </div>
-
-                  </form>
-                </td>
-              </tr>
-              <!-- PHP: } -->
-
-              <!-- PHP: } -->
-
-            </tbody>
-          </table>
+          </form>
         </div>
       </div>
     </div>
@@ -147,11 +120,7 @@
           <h2>+ Nieuw product</h2>
         </div>
         <div class="card-body">
-          <!-- PHP: action="admin.php" method="POST" -->
-          <form action="dbcalls/menukaart/create.php" method="POST">
-
-            <!-- PHP: <input type="hidden" name="action" value="toevoegen"> -->
-
+          <form action="../menukaart/create.php" method="POST">
             <div class="form-grid">
               <div class="form-group">
                 <label for="add-naam">Naam</label>
@@ -165,7 +134,7 @@
                 <label for="add-categorie">Categorie</label>
                 <select id="add-categorie" name="categorie">
                   <option value="friet">Verse Friet</option>
-                  <option value="drankjes">Drankjes</option>
+                  <option value="drinken">Drankjes</option>
                 </select>
               </div>
               <div class="form-group">
@@ -181,18 +150,39 @@
                 <input type="text" id="add-afbeelding" name="afbeeldingen" placeholder="assets/img/friet.png" />
               </div>
             </div>
-
             <div class="form-actions">
               <button type="submit" class="btn btn-green">Toevoegen</button>
             </div>
-
           </form>
         </div>
       </div>
     </div>
 
-
   </div><!-- /admin-wrapper -->
+
+  <script>
+    function laadProduct(select) {
+      const opt = select.options[select.selectedIndex];
+
+      // Vul alle velden in met data van gekozen product
+      document.getElementById('edit-id').value         = opt.value;
+      document.getElementById('delete-id').value       = opt.value;
+      document.getElementById('edit-naam').value       = opt.dataset.naam;
+      document.getElementById('edit-prijs').value      = opt.dataset.prijs;
+      document.getElementById('edit-allergenen').value = opt.dataset.allergenen;
+      document.getElementById('edit-beschrijving').value = opt.dataset.beschrijving;
+      document.getElementById('edit-afbeeldingen').value = opt.dataset.afbeeldingen;
+
+      // Zet de juiste categorie in de dropdown
+      const catSelect = document.getElementById('edit-categorie');
+      for (let i = 0; i < catSelect.options.length; i++) {
+        if (catSelect.options[i].value === opt.dataset.categorie) {
+          catSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  </script>
 
 </body>
 </html>
