@@ -270,7 +270,7 @@
       <img src="assets/img/ChatGPT Image Feb 23, 2026, 03_57_53 PM.png" alt="The Fry Shack Logo" />
     </div>
     <nav class="right">
-      <a href="dbcalls/login/admin.php" class="btn-account">Account</a>
+      <a href="dbcalls/login/login.php" class="btn-account">Account</a>
     </nav>
   </header>
 
@@ -282,7 +282,7 @@
       <p>Vers gebakken, elke dag — met liefde gemaakt</p>
       <div class="hero-btns">
         <a href="menu.php" class="btn-primary">Bekijk ons menu</a>
-        <a href="contact.php" class="btn-outline-white">Contact</a>
+        <a href="dbcalls/contact/contact.php" class="btn-outline-white">Contact</a>
       </div>
     </div>
   </div>
@@ -356,14 +356,14 @@
         <span class="contact-info-value">024 – 123 45 67</span>
       </div>
     </div>
-    <a href="contact.php" class="btn-primary">Stuur een bericht</a>
+    <a href="dbcalls/contact/contact.php" class="btn-primary">Stuur een bericht</a>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <a href="menu.php">Menu</a>
-    <a href="contact.php">Contact</a>
-    <a href="over.php">Over ons</a>
+    <a href="dbcalls/contact/contact.php">Contact</a>
+    <a href="dbcalls/over/over.php">Over ons</a>
   </footer>
 
 </body>

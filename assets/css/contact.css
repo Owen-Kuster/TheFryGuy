@@ -1,0 +1,212 @@
+/* ── HERO KLEIN ── */
+    .hero-small {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+    .hero-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      filter: brightness(0.45);
+    }
+    .hero-small-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+    }
+    .hero-small-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .hero-small-content p {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT LAYOUT ── */
+    .contact-wrapper {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── FORMULIER ── */
+    .contact-form-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 36px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .gold-line {
+      width: 50px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 14px;
+    }
+    .contact-form-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--dark-brown);
+      margin-bottom: 6px;
+    }
+    .contact-form-box > p {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark-brown);
+    }
+    .form-group input,
+    .form-group textarea {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: #fafafa;
+      border: 1px solid #e0d8cc;
+      border-radius: 6px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      background: #fff;
+    }
+    .form-group textarea { height: 120px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .btn-verzend {
+      width: 100%;
+      background: var(--gold);
+      color: var(--dark-brown);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .btn-verzend:hover { background: var(--gold-light); }
+    .form-success {
+      display: none;
+      background: #f0faf4;
+      border: 1px solid #b6e4c8;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: #2a7a4b;
+      margin-top: 14px;
+    }
+
+    /* ── INFO + MAP ── */
+    .contact-info-box {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .info-kaart {
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .info-kaart h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .info-rij {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .info-rij:last-child { margin-bottom: 0; }
+    .info-icon { font-size: 1.1rem; margin-top: 1px; flex-shrink: 0; }
+    .info-rij-tekst {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.55;
+    }
+    .info-rij-tekst strong {
+      display: block;
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .tijden-tabel {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+    }
+    .tijden-tabel tr { border-bottom: 1px solid #f0e8d8; }
+    .tijden-tabel tr:last-child { border-bottom: none; }
+    .tijden-tabel td { padding: 7px 0; color: #555; }
+    .tijden-tabel td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .tijden-tabel .gesloten td:last-child { color: #ccc; font-weight: 400; }
+    .map-embed {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      height: 220px;
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .hero-small-content h1 { font-size: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }

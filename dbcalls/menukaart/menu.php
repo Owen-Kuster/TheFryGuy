@@ -18,7 +18,7 @@
     <nav class="left">
       <a href="index.php">Home</a>
       <a href="menu.php">Menu</a>
-      <a href="contact.php">Contact</a>
+      <a href="../contact/contact.php">Contact</a>
       <a href="over.php">Over ons</a>
     </nav>
 
@@ -27,7 +27,7 @@
     </div>
 
     <nav class="right">
-      <a href="dbcalls/login/admin.php" class="btn-account">Account</a>
+      <a href="dbcalls/login/login.php" class="btn-account">Account</a>
     </nav>
   </header>
 
@@ -138,7 +138,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <a href="menu.php">Menu</a>
+    <a href="index.php">Home</a>
     <a href="contact.php">Contact</a>
     <a href="over.php">Over ons</a>
   </footer>
