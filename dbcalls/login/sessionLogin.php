@@ -3,14 +3,14 @@ session_start();
 
 include "../conn.php";
 
-$sql = "SELECT username, password FROM admin WHERE username = :username AND password = :password";
+$sql = "SELECT user, passwd FROM inlogin WHERE user = :user AND passwd = :passwd";
 
 //preparestatement
 $stmt = $conn->prepare($sql);
 
 //kopelen van database
-$stmt->bindParam(":username", $_POST["username"]);
-$stmt->bindParam(":password", $_POST["password"]);
+$stmt->bindParam(":user", $_POST["user"]);
+$stmt->bindParam(":passwd", $_POST["passwd"]);
 
 //execute on db
 $stmt->execute();

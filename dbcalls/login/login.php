@@ -47,13 +47,13 @@ if(isset($_SESSION["loggedin"])){
 
         <form method="POST" action="admin.php">
           <div class="form-group">
-            <label for="username">Gebruikersnaam</label>
-            <input type="text" id="username" name="username" placeholder="admin" required />
+            <label for="user">Gebruikersnaam</label>
+            <input type="text" id="user" name="user" placeholder="admin" required />
           </div>
 
           <div class="form-group">
-            <label for="password">Wachtwoord</label>
-            <input type="password" id="password" name="password" placeholder="••••••••" required />
+            <label for="passwd">Wachtwoord</label>
+            <input type="password" id="passwd" name="passwd" placeholder="••••••••" required />
           </div>
 
           <button type="submit" class="btn-login">Inloggen</button>
