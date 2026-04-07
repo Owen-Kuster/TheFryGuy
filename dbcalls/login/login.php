@@ -45,7 +45,7 @@ if(isset($_SESSION["loggedin"])){
           // Voeg hier je login logica in
         ?>
 
-        <form method="POST" action="admin.php">
+        <form method="POST" action="sessionLogin.php">
           <div class="form-group">
             <label for="user">Gebruikersnaam</label>
             <input type="text" id="user" name="user" placeholder="admin" required />

@@ -53,7 +53,7 @@
 
     <!-- MENU -->
     <main class="menu-content">
-
+<?php //opdracht: Ik wil 1 foreach opdeze pagina zien, los dit op.?>
       <!-- VERSE FRIET -->
       <section>
         <div class="section-title">Verse Friet</div>
@@ -76,7 +76,7 @@
                 </div>
                 <button
                   class="btn-voeg"
-                  data-naam="<?php echo htmlspecialchars($product['naam']); ?>"
+                  data-naam="<?php echo $product['naam']; ?>"
                   data-prijs="<?php echo $product['prijs']; ?>">
                   Voeg toe
                 </button>

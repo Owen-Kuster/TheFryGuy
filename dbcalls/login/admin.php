@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(!isset($_SESSION["loggedin"])){
+  header("Location: ../login/login.php");
+}
+
 include '../conn.php';
 
 $sql = "SELECT * FROM menukaart";
@@ -6,6 +12,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $producten = $stmt->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -23,7 +30,10 @@ $producten = $stmt->fetchAll();
   <header class="admin-header">
     <span class="badge">Panel</span>
     <h1>Admin</h1>
-    <a href="../../index.php" class="back-link">← Terug naar site</a>
+    <div style="display: flex; gap: 20px;">
+      <a href="../../index.php" class="back-link">Terug naar site</a>
+      <a href="../login/sessionLogout.php" class="back-link" style="color: #d9534f;">Uitloggen</a>
+    </div>
   </header>
 
   <div class="admin-wrapper">

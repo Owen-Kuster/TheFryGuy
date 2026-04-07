@@ -18,11 +18,10 @@ $stmt->execute();
 //ophalen van data
 $result = $stmt->fetch();
 
-if (!$result){
-    echo "je bent niet ingelogd";
+if ($result == false) {
+    header("location: login.php");
 } else {
     $_SESSION["loggedin"] = true;
-    $_SESSION["username"] = $result["username"];
 
     header("location: admin.php");
 }
