@@ -13,6 +13,22 @@
 
 <body>
 
+  <?php
+  include __DIR__ . '/../conn.php';
+  
+  $zoek = $_GET['zoek'] ?? '';
+  if ($zoek) {
+    $sql = "SELECT * FROM menukaart WHERE naam LIKE ? OR categorie LIKE ?";
+    $stmt = $conn->prepare($sql);
+    $zoeken = "%$zoek%";
+    $stmt->execute([$zoeken, $zoeken]);
+  } else {
+    $stmt = $conn->prepare("SELECT * FROM menukaart");
+    $stmt->execute();
+  }
+  $result = $stmt->fetchAll();
+  ?>
+
   <!-- HEADER -->
   <header>
     <nav class="left">
@@ -45,94 +61,95 @@
 
     <!-- SEARCH -->
     <div class="search-wrap">
-      <div class="search-bar">
-        <img src="assets/img/search-icon.svg" alt="zoek" />
-        <input type="text" placeholder="Zoek naar menu items" />
-      </div>
+      <form method="GET" action="menu.php" class="search-bar">
+        <input 
+          type="text" 
+          name="zoek"
+          placeholder="Zoek naar menu items" 
+          value="<?php echo ($_GET['zoek'] ?? ''); ?>"
+        />
+        <button type="submit"></button>
+      </form>
     </div>
 
-    <!-- MENU -->
-    <main class="menu-content">
-<?php //opdracht: Ik wil 1 foreach opdeze pagina zien, los dit op.?>
-      <!-- VERSE FRIET -->
-      <section>
-        <div class="section-title">Verse Friet</div>
-        <div class="grid-2">
-          <?php foreach ($result as $product) {
-            if ($product["categorie"] == "friet") { ?>
-              <div class="card">
-                <div class="card-top">
-                  <div class="card-info">
-                    <div class="card-name"><?php echo $product['naam']; ?></div>
-                    <div class="card-price">€<?php echo $product['prijs']; ?>,00</div>
-                  </div>
-                  <img src="<?php echo $product['afbeeldingen']; ?>" alt="Kleine Friet" class="card-img" />
+  <!-- MENU -->
+  <main class="menu-content">
+    <?php //opdracht: Ik wil 1 foreach opdeze pagina zien, los dit op. ?>
+    <!-- VERSE FRIET -->
+    <section>
+      <div class="section-title">Verse Friet</div>
+      <div class="grid-2">
+        <?php foreach ($result as $product) {
+          if ($product["categorie"] == "friet") { ?>
+            <div class="card">
+              <div class="card-top">
+                <div class="card-info">
+                  <div class="card-name"><?php echo $product['naam']; ?></div>
+                  <div class="card-price">€<?php echo $product['prijs']; ?>,00</div>
                 </div>
-                <div class="card-description"><?php echo $product['beschrijving']; ?></div>
-                <hr class="card-divider" />
-                <div class="card-allergens">
-                  <span class="allergen-label">Allergenen:</span>
-                  <span class="allergen-tag"><?php echo $product['allergenen']; ?></span>
-                </div>
-                <button
-                  class="btn-voeg"
-                  data-naam="<?php echo $product['naam']; ?>"
-                  data-prijs="<?php echo $product['prijs']; ?>">
-                  Voeg toe
-                </button>
+                <img src="<?php echo $product['afbeeldingen']; ?>" alt="Kleine Friet" class="card-img" />
               </div>
-            <?php }
-          } ?>
-        </div>
-      </section>
-
-      <!-- DRANKJES -->
-      <section>
-        <div class="section-title">Drankjes</div>
-        <div class="grid-2">
-          <?php foreach ($result as $product) {
-            if ($product["categorie"] == "drinken") { ?>
-              <div class="card">
-                <div class="card-top">
-                  <div class="card-info">
-                    <div class="card-name"><?php echo $product['naam']; ?></div>
-                    <div class="card-price">€<?php echo $product['prijs']; ?>,00</div>
-                  </div>
-                  <img src="<?php echo $product['afbeeldingen']; ?>" alt="Coca Cola" class="card-img" />
-                </div>
-                <div class="card-description"><?php echo $product['beschrijving']; ?></div>
-                <hr class="card-divider" />
-                <div class="card-allergens">
-                  <span class="allergen-none">Geen allergenen</span>
-                </div>
-                <button
-                  class="btn-voeg"
-                  data-naam="<?php echo htmlspecialchars($product['naam']); ?>"
-                  data-prijs="<?php echo $product['prijs']; ?>">
-                  Voeg toe
-                </button>
+              <div class="card-description"><?php echo $product['beschrijving']; ?></div>
+              <hr class="card-divider" />
+              <div class="card-allergens">
+                <span class="allergen-label">Allergenen:</span>
+                <span class="allergen-tag"><?php echo $product['allergenen']; ?></span>
               </div>
-            <?php }
-          } ?>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- SIDEBAR: ORDER BOX -->
-    <aside class="sidebar">
-      <div class="order-box">
-        <div class="order-title">Jouw bestelling</div>
-        <ul class="order-items" id="orderItems">
-          <li class="order-empty">Nog niets toegevoegd</li>
-        </ul>
-        <div class="totaal-row">
-          <span class="totaal-label">Totaal</span>
-          <span class="totaal-amount" id="totaalBedrag">€ 0,00</span>
-        </div>
-        <a href="afrekenen.php" class="btn-afrekenen">Afrekenen</a>
+              <button class="btn-voeg" data-naam="<?php echo $product['naam']; ?>"
+                data-prijs="<?php echo $product['prijs']; ?>">
+                Voeg toe
+              </button>
+            </div>
+          <?php }
+        } ?>
       </div>
-    </aside>
+    </section>
+
+    <!-- DRANKJES -->
+    <section>
+      <div class="section-title">Drankjes</div>
+      <div class="grid-2">
+        <?php foreach ($result as $product) {
+          if ($product["categorie"] == "drinken") { ?>
+            <div class="card">
+              <div class="card-top">
+                <div class="card-info">
+                  <div class="card-name"><?php echo $product['naam']; ?></div>
+                  <div class="card-price">€<?php echo $product['prijs']; ?>,00</div>
+                </div>
+                <img src="<?php echo $product['afbeeldingen']; ?>" alt="Coca Cola" class="card-img" />
+              </div>
+              <div class="card-description"><?php echo $product['beschrijving']; ?></div>
+              <hr class="card-divider" />
+              <div class="card-allergens">
+                <span class="allergen-none">Geen allergenen</span>
+              </div>
+              <button class="btn-voeg" data-naam="<?php echo htmlspecialchars($product['naam']); ?>"
+                data-prijs="<?php echo $product['prijs']; ?>">
+                Voeg toe
+              </button>
+            </div>
+          <?php }
+        } ?>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SIDEBAR: ORDER BOX -->
+  <aside class="sidebar">
+    <div class="order-box">
+      <div class="order-title">Jouw bestelling</div>
+      <ul class="order-items" id="orderItems">
+        <li class="order-empty">Nog niets toegevoegd</li>
+      </ul>
+      <div class="totaal-row">
+        <span class="totaal-label">Totaal</span>
+        <span class="totaal-amount" id="totaalBedrag">€ 0,00</span>
+      </div>
+      <a href="afrekenen.php" class="btn-afrekenen">Afrekenen</a>
+    </div>
+  </aside>
 
   </div>
 
