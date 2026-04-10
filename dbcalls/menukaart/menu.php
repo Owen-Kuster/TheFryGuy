@@ -18,10 +18,10 @@
   
   $zoek = $_GET['zoek'] ?? '';
   if ($zoek) {
-    $sql = "SELECT * FROM menukaart WHERE naam LIKE ? OR categorie LIKE ?";
+    $sql = "SELECT * FROM menukaart WHERE naam LIKE ?";
     $stmt = $conn->prepare($sql);
     $zoeken = "%$zoek%";
-    $stmt->execute([$zoeken, $zoeken]);
+    $stmt->execute([$zoeken]);
   } else {
     $stmt = $conn->prepare("SELECT * FROM menukaart");
     $stmt->execute();
